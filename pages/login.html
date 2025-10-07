@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TechNova | Login © F1-G16</title>
+    <link rel="stylesheet" href="../assets/technova.css">
+</head>
+<body>
+    <header class="header" aria-label="Barra de navegación">
+        <div class="brand">TechNova</div>
+        <nav class="nav" aria-label="Principal">
+            <a href="index.html">inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="#">Proyectos</a>
+            <a class="btn" href="#">Contacto</a>
+            <a class="btn" href="login.html" aria-current="page">Login</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="card" style="display:grid; grid-template-columns:1.2fr 1fr; min-height:520px; overflow:hidden">
+            <section style="display:grid; place-items:center; background:#fafafa; padding:40px">
+                <!-- Ilustración -->
+                <svg viewBox="0 0 420 320" style="max-width:420px; width:100%"><g fill="#3b73d1">
+                <circle cx="96" cy="230" r="76" fill="#3b73d1" opacity=".12"/>
+                <rect x="220" y="120" width="120" height="160" rx="12" />
+                <rect x="236" y="140" width="88" height="28" rx="6" fill="#fff"/>
+                <circle cx="260" cy="264" r="6" fill="#fff"/><circle cx="284" cy="264" r="6" fill="#fff"/>
+                <rect x="44" y="168" width="120" height="86" rx="10"/><rect x="44" y="262" width="120" height="28" rx="10"/>
+                <rect x="44" y="132" width="120" height="28" rx="10"/><circle cx="156" cy="272" r="22" fill="#fff"/>
+                <circle cx="156" cy="272" r="16" fill="#3b73d1"/><rect x="150" y="266" width="12" height="12" rx="2" fill="#fff"/>
+                <path d="M320 104c0-26-22-48-52-48-16 0-30 7-39 18a44 44 0 0 0-68 36c0 27 23 50 52 50h100c21 0 38-15 38-34s-17-34-38-34h-3z"/></g>
+                </svg>
+            </section>
+
+            <section style="padding:40px">
+                <h1>TechNova</h1>
+                <p class="small" style="margin-bottom:22px">Login</p>
+                <form id="loginForm" novalidate>
+                    <div style="margin-bottom:12px">
+                        <label class="label" for="email">EMAIL</label>
+                        
+                        <input class="control" type="email" id="email" placeholder="tucorreo@empresa.com" required />
+                        
+                        <p class="small" id="emailError" style="color:#b00020; display:none">Ingresa un correo válido.</p>
+                    </div>
+                    <div style="margin-bottom:12px; position:relative">
+                        <label class="label" for="password">CONTRASEÑA</label>
+                        
+                        <input class="control" type="password" id="password" placeholder="********" minlength="6" required />
+                        
+                        <button type="button" id="togglePwd" class="btn btn--light" style="position:absolute; right:8px; top:34px; height:32px; padding:0 10px">👁</button>
+                        
+                        <p class="small" id="pwdError" style="color:#b00020; display:none">La contraseña debe tener al menos 6 caracteres.</p>
+                    </div>
+                    <p>
+                        <a class="link" href="#">Recuperar Contraseña</a>
+                    </p>
+                    <button id="submitBtn" class="btn" type="submit">
+                        INICIAR SESIÓN
+                    </button>
+                    <p id="toast" class="small" style="display:none; margin-top:10px"></p>
+                    <p class="small" style="margin-top:12px">
+                        <a class="link" href="index.html">Regresar al home</a>
+                    </p>
+                </form>
+            </section>
+        </div>
+    </main>
+
+        <footer class="footer" role="contentinfo">
+            <strong>TechNova Solutions</strong>
+            <div class="spacer"></div>
+
+            <a class="link" href="index.html">inicio</a>
+            <a class="link" href="servicios.html">Servicios</a>
+
+            <div class="socials">
+                <a class="chip" href="" aria-label="LinkedIn" target="_blank" rel="noopener">
+                    <img src="../assets/icons/linkedin.png" alt="">
+                </a>
+                <a class="chip" href="" aria-label="X" target="_blank" rel="noopener">
+                    <img src="../assets/icons/twitter.png" alt="">
+                </a>
+                <a class="chip" href="" aria-label="WhatsApp" target="_blank" rel="noopener">
+                    <img src="../assets/icons/whatsapp.png" alt="">
+                </a>
+            </div>
+        </footer>
+
+    <script src="../js/users.js"></script>
+    <script src="../js/login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+:root{
+  --bg:#f3f4f6; --text:#111111; --muted:#6b7280; --border:#e5e7eb;
+  --blue:#3b73d1; --blue-100:#e6f0ff; --danger:#b00020;
+  --dark:#2b2b2b; --white:#ffffff; --radius:12px;
+}
+*{
+    box-sizing:border-box
+}
+
+html,body{
+    height:100%
+}
+
+body{
+    margin:0; 
+    font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+    color:var(--text); 
+    background:var(--bg); 
+    display:flex; 
+    flex-direction:column; 
+    min-height:100vh;
+}
+
+/* Header */
+.header{
+    display:flex; 
+    align-items:center; 
+    gap:12px; 
+    padding:14px 24px; 
+    background:var(--bg);
+    position:sticky; 
+    top:0; z-index:10; 
+    border-bottom:1px solid var(--border);
+}
+
+.brand{
+    font-weight:800
+}
+
+.nav{
+    margin-left:auto; 
+    display:flex; 
+    gap:40px; 
+    align-items:center
+}
+
+.nav a{
+    color:#333; 
+    text-decoration:none
+}
+
+.btn{
+    display:inline-block; 
+    padding:8px 16px; 
+    border-radius:8px; 
+    background:var(--blue); 
+    color:#fff; 
+    text-decoration:none; 
+    border:none; 
+    cursor:pointer
+}
+
+.btn--light{
+    background:#e5e7eb; 
+    color:var(--text)
+}
+
+.btn--warn{
+    background:#ffe6e6; 
+    color:#b00020
+}
+
+.btn:disabled{
+    opacity:.7; cursor:not-allowed
+}
+
+
+/* Layout util */
+.container{
+    width:min(1200px,92vw); 
+    margin:24px auto
+}
+
+.card{
+    background:var(--white); 
+    border:1px solid var(--border); 
+    border-radius:var(--radius)
+}
+
+.grid{
+    display:grid; 
+    gap:20px
+}
+
+.grid-3{
+    grid-template-columns:repeat(3,minmax(0,1fr))
+}
+
+.grid-4{
+    grid-template-columns:repeat(4,minmax(0,1fr))
+}
+
+
+@media (max-width:980px){ 
+    .grid-3{grid-template-columns:1fr} 
+    .grid-4{grid-template-columns:repeat(2,minmax(0,1fr))} 
+}
+
+@media (min-width: 1280px){
+  .grid-5lg { grid-template-columns: repeat(5, minmax(0,1fr)); }
+}
+
+/* Footer */
+.footer{ 
+    margin-top:auto; 
+    background:var(--dark); 
+    color:#fff; 
+    display:flex; 
+    align-items:center; 
+    gap:24px; 
+    padding:26px 24px; 
+}
+
+.footer .spacer{
+    flex:1
+}
+
+.link{
+    color:var(--blue); 
+    text-decoration:none
+}
+
+.footer .socials { 
+    display:flex; 
+    gap:12px; 
+    align-items:center; 
+}
+
+.footer .chip{
+  width:40px; 
+  height:40px; 
+  display:grid; 
+  place-items:center;
+  border:2px solid #fff; 
+  border-radius:10px; 
+  padding:0;
+  transition:transform .15s ease, opacity .15s ease;
+}
+
+/* El <img> va dentro del chip */
+.footer .chip img{
+  width:22px; 
+  height:22px; 
+  display:block;
+  /* si tus íconos son negros, esto los vuelve blancos sobre el footer oscuro */
+  filter: invert(1);
+  opacity:.9;
+}
+
+.footer .chip:hover{ 
+    transform:scale(1.06); 
+}
+
+.footer .chip:hover img{ 
+    opacity:1; 
+}
+
+
+/* Controls */
+.label{
+    display:block; 
+    font-size:14px; 
+    margin-bottom:6px
+}
+
+.control{
+    width:100%; 
+    padding:12px 14px; 
+    border:1px solid var(--border); 
+    border-radius:8px; 
+    background:var(--white); 
+    font-size:16px
+}
+
+.control:focus{
+    outline:3px solid var(--blue-100); 
+    border-color:var(--blue)
+}
+
+.small{
+    font-size:14px; 
+    color:var(--muted)
+}
+
+.center{
+    text-align:center
+}
+
+.badge{
+    display:inline-block; 
+    padding:4px 10px; 
+    border-radius:999px; 
+    background:var(--blue-100); 
+    color:var(--blue); 
+    border:1px solid #b3ccff; 
+    font-size:12px
+}
+
+.table{
+    width:100%; 
+    border-collapse:collapse
+}
+
+.table th,.table td{
+    border:1px solid var(--border); 
+    padding:10px; 
+    text-align:left; 
+    background:#fff
+}
+
+.table th{
+    background:#f6f6f6
+}
+
+.hero{
+    background:#2f2f2f; 
+    color:#fff; 
+    border-radius:12px; 
+    padding:48px
+}
+.hero .cta{
+    margin-top:16px
+}
+
+

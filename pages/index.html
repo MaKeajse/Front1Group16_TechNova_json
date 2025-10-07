@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TechNova | Inicio © F1-G16</title>
+    <link rel="stylesheet" href="../assets/technova.css">
+</head>
+<body>
+    <header class="header" aria-label="Barra de navegación">
+    <div class="brand">TechNova</div>
+    <nav class="nav" aria-label="Principal">
+        <a href="index.html">inicio</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="#">Proyectos</a>
+        <a class="btn" href="#">Contacto</a>
+        <a class="btn" href="login.html">Login</a>
+    </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero card">
+            <h1>Innovación para tu futuro digital</h1>
+            <p class="small">Creamos soluciones tecnológicas a la medida</p>
+            <div class="cta"><a class="btn" href="servicios.html">Ver servicios</a></div>
+        </section>
+
+        <h2>Servicios</h2>
+        <section id="destacados" class="grid grid-3" aria-label="Servicios destacados"></section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <strong>TechNova Solutions</strong>
+        <div class="spacer"></div>
+
+        <a class="link" href="index.html">inicio</a>
+        <a class="link" href="servicios.html">Servicios</a>
+
+        <div class="socials">
+            <a class="chip" href="" aria-label="LinkedIn" target="_blank" rel="noopener">
+                <img src="../assets/icons/linkedin.png" alt="">
+            </a>
+            <a class="chip" href="" aria-label="X" target="_blank" rel="noopener">
+                <img src="../assets/icons/twitter.png" alt="">
+            </a>
+            <a class="chip" href="" aria-label="WhatsApp" target="_blank" rel="noopener">
+                <img src="../assets/icons/whatsapp.png" alt="">
+            </a>
+        </div>
+    </footer>
+
+
+    <script src="../js/data.js"></script>
+    <script>
+        // Si mueves páginas a /pages, esta base mantiene la ruta correcta a los iconos
+        function iconsBase(){
+            return location.pathname.includes('/pages/') ? '../assets/icons/' : 'assets/icons/';
+        }
+
+        // Pinta las tarjetas del home como el mockup (3 items fijos sin precio)
+    (async () => {
+      // 1) Intenta sembrar desde JSON (si existe esa función)
+      try {
+        if (typeof ensureSeededServices === 'function') {
+          await ensureSeededServices();
+        }
+      } catch (e) {
+        console.warn('No se pudo leer JSON (ok si abres con file://). Uso fallback.', e);
+      }
+
+      // 2) Obtén servicios existentes (si data.js cargó)
+      let servicios = [];
+      if (typeof loadServices === 'function') {
+        try { servicios = loadServices() || []; } catch { servicios = []; }
+      }
+
+      // 3) Fallback duro para que SIEMPRE renderice algo
+      if (!servicios || !servicios.length) {
+        servicios = [
+          { id:101, nombre:'Desarrollo web',  icon:'desarrollo-web.svg' },
+          { id:102, nombre:'Apps Móviles',    icon:'apps-moviles.svg' },
+          { id:103, nombre:'Consultoría TI',  icon:'consultoria-ti.svg' }
+        ];
+        // Intenta guardar el fallback en localStorage para siguientes vistas
+        if (typeof saveServices === 'function') {
+          try { saveServices(servicios); } catch {}
+        }
+      }
+
+      // 4) Render de las 3 tarjetas del mockup (sin precio)
+      const base = iconsBase();
+      const wrap = document.getElementById('destacados');
+      if (!wrap) return;
+
+      const idsHome = [101,102,103];
+      const items = servicios.filter(s => idsHome.includes(s.id)).slice(0,3);
+
+      wrap.innerHTML = '';
+      items.forEach(s => {
+        const src = base + (s.icon || 'default.svg');
+        wrap.insertAdjacentHTML('beforeend', `
+          <article class="card" style="padding:24px; text-align:center">
+            <img src="${src}" alt="${s.nombre}" width="96" height="96"
+                 onerror="this.onerror=null;this.src='${base}default.svg';"
+                 style="display:block;margin:0 auto 12px;">
+            <div style="font-size:20px; font-weight:700; margin-bottom:8px;">${s.nombre}</div>
+            <a class="btn" href="detalle.html?id=${s.id}">Ver Servicios</a>
+          </article>
+        `);
+      });
+    })();
+  </script>
+
+</body>
+</html>

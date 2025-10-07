@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "nombre": "Admin TechNova",
+        "email": "admin@technova.com",
+        "rol": "admin",
+        "password": "admin123",
+        "estado": 1,
+        "creado_en": "2025-01-01T00:00:00.000Z"
+    },
+   
+    {
+        "id": 2,
+        "nombre": "Soporte TechNova",
+        "email": "soporte@technova.com",
+        "rol": "soporte",
+        "password": "soporte123",
+        "estado": 1,
+        "creado_en": "2025-01-03T00:00:00.000Z"
+    }
+]
+

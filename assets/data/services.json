@@ -1,0 +1,112 @@
+
+[
+    {
+        "id":101,
+        "nombre":"Desarrollo web",
+        "icon":"desarrollo-web.png",
+        "precio":2400000,
+        "stock":25,
+        "en_promocion":true,
+        "imagen_url":"",
+        "descripcion":"Sitios responsivos (React/Angular) con APIs REST y despliegue en la nube."
+    },
+
+    {
+        "id":102,
+        "nombre":"Apps Móviles",
+        "icon":"apps-moviles.png",
+        "precio":3200000,
+        "stock":15,
+        "en_promocion":false,
+        "imagen_url":"",
+        "descripcion":"Apps nativas o híbridas para Android/iOS."
+    },
+
+    {
+        "id":103,
+        "nombre":"Consultoría TI",
+        "icon":"consultoria-ti.png",
+        "precio":2800000,
+        "stock":12,
+        "en_promocion":false,
+        "imagen_url":"",
+        "descripcion":"Evaluación, estrategia y roadmap tecnológico."
+    },
+
+    {
+        "id":104,
+        "nombre":"Servicios Nube",
+        "icon":"cloud.png",
+        "precio":3600000,
+        "stock":10,
+        "en_promocion":false,
+        "imagen_url":"",
+        "descripcion":"Migración a la nube, contenedores y CI/CD."
+    },
+
+    {
+        "id":105,
+        "nombre":"IA",
+        "icon":"ai.png",
+        "precio":4200000,
+        "stock":8,
+        "en_promocion":true,
+        "imagen_url":"",
+        "descripcion":"Casos de ML/IA aplicada al negocio."
+    },
+
+    {
+        "id":106,
+        "nombre":"Soporte Técnico",
+        "icon":"headset.png",
+        "precio":900000,
+        "stock":50,
+        "en_promocion":true,
+        "imagen_url":"",
+        "descripcion":"Soporte remoto y en sitio 24/7."
+    },
+
+    {
+        "id":107,
+        "nombre":"E-Commerce",
+        "icon":"shopping-cart.png",
+        "precio":2600000,
+        "stock":18,
+        "en_promocion":false,
+        "imagen_url":"",
+        "descripcion":"Tiendas online y pasarelas de pago."
+    },
+
+    {
+        "id":108,
+        "nombre":"UI/UX Design",
+        "icon":"edit-tools.png",
+        "precio":2200000,
+        "stock":20,
+        "en_promocion":false,
+        "imagen_url":"",
+        "descripcion":"Investigación UX, prototipos y pruebas."
+    },
+    {
+        "id":109,
+        "nombre":"IoT",
+        "icon":"internet-of-things.png",
+        "precio":3000000,
+        "stock":14,
+        "en_promocion":false,
+        "imagen_url":"",
+        "descripcion":"Integración de dispositivos y telemetría."
+    },
+    {
+        "id":110,
+        "nombre":"Desarrollo de APIs",
+        "icon":"processing.png",
+        "precio":2100000,
+        "stock":22,
+        "en_promocion":false,
+        "imagen_url":"",
+        "descripcion":"APIs REST/GraphQL, documentación y seguridad."
+    }
+]
+
+

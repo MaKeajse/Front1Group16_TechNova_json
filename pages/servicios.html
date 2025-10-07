@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TechNova | Servicios © F1-G16</title>
+    <link rel="stylesheet" href="../assets/technova.css">
+</head>
+<body>
+    <header class="header" aria-label="Barra de navegación">
+        <div class="brand">TechNova</div>
+        <nav class="nav" aria-label="Principal">
+            <a href="index.html">inicio</a>
+            <a href="servicios.html" aria-current="page">Servicios</a>
+            <a href="#">Proyectos</a>
+            <a class="btn" href="#">Contacto</a>
+            <a class="btn" href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="center">Nuestros Servicios</h1>
+        <section id="grid" class="grid grid-4 grid-5lg" aria-label="Catálogo de servicios"></section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <strong>TechNova Solutions</strong>
+        <div class="spacer"></div>
+
+        <a class="link" href="index.html">inicio</a>
+        <a class="link" href="servicios.html">Servicios</a>
+
+        <div class="socials">
+            <a class="chip" href="" aria-label="LinkedIn" target="_blank" rel="noopener">
+                <img src="../assets/icons/linkedin.png" alt="">
+            </a>
+            <a class="chip" href="" aria-label="X" target="_blank" rel="noopener">
+                <img src="../assets/icons/twitter.png" alt="">
+            </a>
+            <a class="chip" href="" aria-label="WhatsApp" target="_blank" rel="noopener">
+                <img src="../assets/icons/whatsapp.png" alt="">
+            </a>
+        </div>
+    </footer>
+
+    <script src="../js/data.js"></script>
+    <script>
+        function iconsBase(){
+            // Si la página está dentro de /pages usa ../assets/icons/, si no, assets/icons/
+            return location.pathname.includes('/pages/') ? '../assets/icons/' : 'assets/icons/';
+        }
+    </script>
+
+    <script>
+        
+        const grid = document.getElementById('grid');
+        const base = iconsBase();
+
+        grid.innerHTML = '';
+        for (const s of loadServices()){
+            const src = base + (s.icon || 'default.svg'); // fallback si faltara el icono
+            const promo = s.en_promocion ? '<span class="badge" style="margin-left:8px">Promo</span>' : '';
+            grid.insertAdjacentHTML('beforeend', `
+            <article class="card" style="padding:20px; text-align:center">
+                <img src="${src}" alt="${s.nombre}" width="96" height="96"
+                    onerror="this.onerror=null;this.src='${base}default.svg';"
+                    style="display:block;margin:0 auto 12px;">
+                <div style="font-weight:700; margin-bottom:6px;">${s.nombre}${promo}</div>
+                <div class="small" style="margin-bottom:12px;">${formatMoney(s.precio)}</div>
+                <a class="btn" href="detalle.html?id=${s.id}">Ver detalles</a>
+            </article>
+            `);
+        }
+    </script>
+</body>
+</html>

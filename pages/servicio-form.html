@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TechNova | Servicio (Crear/Editar) © F1-G16</title>
+    <link rel="stylesheet" href="../assets/technova.css">
+</head>
+<body>
+    <header class="header">
+        <div class="brand">TechNova</div>
+        <nav class="nav">
+            <a href="index.html">inicio</a>
+            <a href="servicios.html">Servicios</a>
+            <a href="#">Proyectos</a>
+            <a class="btn" href="#">Contacto</a>
+            <a class="btn" href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Servicios / Crear-Editar</h1>
+        <form id="form" class="card" style="padding:24px; max-width:860px">
+            <div style="margin-bottom:14px">
+                <label class="label" for="nombre">Nombre</label>
+                <input class="control" id="nombre" required />
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px">
+                <div>
+                    <label class="label" for="precio">Precio</label>
+                    <input class="control" id="precio" type="number" min="0" step="1000" required />
+                </div>
+                <div>
+                    <label class="label" for="stock">Stock</label>
+                    <input class="control" id="stock" type="number" min="0" required />
+                </div>
+            </div>
+            <div style="margin-top:14px">
+                <label class="label" for="descripcion">Descripción</label>
+                <textarea class="control" id="descripcion" rows="5"></textarea>
+            </div>
+            <div style="margin-top:14px">
+                <label class="label" for="imagen_url">Imagen (URL)</label>
+                <input class="control" id="imagen_url" type="url" placeholder="https://..." />
+            </div>
+            <div style="margin-top:14px; display:flex; align-items:center; gap:10px">
+                <input id="en_promocion" type="checkbox" /> 
+                <label for="en_promocion">En promoción</label>
+            </div>
+            <div style="margin-top:18px; display:flex; gap:12px">
+                <button class="btn" type="submit">Guardar</button>
+                <a class="btn btn--light" href="admin.html" role="button">Cancelar</a>
+            </div>
+            <p id="msg" class="small" style="margin-top:12px"></p>
+        </form>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+        <strong>TechNova Solutions</strong>
+        <div class="spacer"></div>
+
+        <a class="link" href="index.html">inicio</a>
+        <a class="link" href="servicios.html">Servicios</a>
+
+        <div class="socials">
+            <a class="chip" href="" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <img src="../assets/icons/linkedin.png" alt="">
+            </a>
+            <a class="chip" href="" aria-label="X" target="_blank" rel="noopener">
+            <img src="../assets/icons/twitter.png" alt="">
+            </a>
+            <a class="chip" href="" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <img src="../assets/icons/whatsapp.png" alt="">
+            </a>
+        </div>
+    </footer>
+
+    <script src="../js/data.js"></script>
+    <script>
+        function iconsBase(){
+            // Si la página está dentro de /pages usa ../assets/icons/, si no, assets/icons/
+            return location.pathname.includes('/pages/') ? '../assets/icons/' : 'assets/icons/';
+        }
+    </script>
+
+    <script>
+        const params = new URLSearchParams(location.search);
+        const id = params.get('id');
+        const form = document.getElementById('form');
+        const msg = document.getElementById('msg');
+        if(id){
+        const s = getService(id);
+        if(s){ nombre.value=s.nombre; precio.value=s.precio; stock.value=s.stock; descripcion.value=s.descripcion||''; imagen_url.value=s.imagen_url||''; en_promocion.checked=!!s.en_promocion; }
+        }
+        form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const svc = {
+            id: id ? Number(id) : undefined,
+            nombre: nombre.value.trim(),
+            precio: Number(precio.value||0),
+            stock: Number(stock.value||0),
+            descripcion: descripcion.value.trim(),
+            imagen_url: imagen_url.value.trim(),
+            en_promocion: en_promocion.checked
+        };
+        const newId = upsertService(svc);
+        msg.textContent = 'Guardado con éxito (ID '+newId+'). Redirigiendo...';
+        setTimeout(()=>location.href='admin.html', 600);
+        });
+    </script>
+</body>
+</html>
